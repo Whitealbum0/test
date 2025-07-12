@@ -20,7 +20,12 @@ echo 📝 Обновляем конфигурацию frontend...
 
 REM Создаем .env.production для frontend
 cd frontend
-echo REACT_APP_BACKEND_URL=http://%EXTERNAL_IP%:8001 > .env.production
+if not exist .env.production (
+    echo REACT_APP_BACKEND_URL=http://%EXTERNAL_IP%:8001 > .env.production
+) else (
+    del .env.production
+    echo REACT_APP_BACKEND_URL=http://%EXTERNAL_IP%:8001 > .env.production
+)
 echo ✅ Конфигурация frontend обновлена
 cd ..
 
