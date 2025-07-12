@@ -167,7 +167,7 @@ async def update_profile(profile_update: ProfileUpdate):
     return Profile(**updated_profile)
 
 @api_router.post("/profile/upload-image")
-async def upload_image(file: UploadFile = File(...), image_type: str = "avatar"):
+async def upload_image(file: UploadFile = File(...), image_type: str = Form("avatar")):
     """Upload and convert image to base64"""
     logger.info(f"Upload image called with image_type: '{image_type}'")
     if not file.content_type.startswith("image/"):
