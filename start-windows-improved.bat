@@ -31,7 +31,7 @@ if not exist "venv\Scripts\activate.bat" (
 
 echo ✅ Backend окружение готово
 echo 🚀 Запуск FastAPI сервера...
-start "Portfolio Backend" cmd /k "cd /d %cd% && call venv\Scripts\activate.bat && echo Backend запущен на http://localhost:8001 && echo API документация: http://localhost:8001/docs && uvicorn server:app --reload --host 0.0.0.0 --port 8001"
+start "Portfolio Backend" cmd /k "cd /d "%cd%" && call venv\Scripts\activate.bat && echo Backend запущен на http://localhost:8001 && echo API документация: http://localhost:8001/docs && uvicorn server:app --reload --host 0.0.0.0 --port 8001"
 
 cd ..
 
