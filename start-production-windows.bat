@@ -62,7 +62,7 @@ if not exist "node_modules" (
 
 REM Запускаем frontend в фоновом режиме
 echo 🚀 Запуск React приложения...
-start /min "Portfolio Frontend" cmd /c "cd /d %cd% && set REACT_APP_ENV=production && yarn start"
+start /min "Portfolio Frontend" cmd /c "cd /d "%cd%" && set REACT_APP_ENV=production && yarn start"
 
 echo ✅ Frontend запущен на порту 3000
 cd ..
