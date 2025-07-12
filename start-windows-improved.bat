@@ -53,7 +53,7 @@ if not exist "node_modules" (
 
 echo ✅ Frontend окружение готово
 echo 🚀 Запуск React приложения...
-start "Portfolio Frontend" cmd /k "cd /d %cd% && echo Frontend запущен на http://localhost:3000 && yarn start"
+start "Portfolio Frontend" cmd /k "cd /d "%cd%" && echo Frontend запущен на http://localhost:3000 && yarn start"
 
 cd ..
 
