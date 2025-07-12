@@ -45,7 +45,7 @@ if not exist "venv\Scripts\activate.bat" (
 
 REM Запускаем backend в фоновом режиме
 echo 🚀 Запуск FastAPI сервера...
-start /min "Portfolio Backend" cmd /c "cd /d %cd% && call venv\Scripts\activate.bat && uvicorn server:app --host 0.0.0.0 --port 8001"
+start /min "Portfolio Backend" cmd /c "cd /d "%cd%" && call venv\Scripts\activate.bat && uvicorn server:app --host 0.0.0.0 --port 8001"
 
 echo ✅ Backend запущен на порту 8001
 cd ..
