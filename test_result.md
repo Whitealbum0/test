@@ -149,6 +149,12 @@ backend:
         - working: true
           agent: "testing"
           comment: "Successfully tested image upload functionality for both avatar and background images. Images are correctly resized based on type (avatar to 300x300, background to 1200x600). Base64 conversion works properly and images are stored in the database. Invalid file type validation is working correctly."
+        - working: false
+          agent: "testing"
+          comment: "CRITICAL BUG FOUND: Background image uploads were incorrectly updating the avatar field instead of background_image field. Root cause: FastAPI requires Form() dependency for form data parameters when used with UploadFile. Fixed by changing image_type parameter from str = 'avatar' to str = Form('avatar')."
+        - working: true
+          agent: "testing"
+          comment: "FIXED: Image upload bug resolved. Both avatar and background image uploads now work correctly. Avatar images update the 'avatar' field, background images update the 'background_image' field. Verified with comprehensive tests that both image types are stored separately and correctly."
 
   - task: "MongoDB Integration"
     implemented: true
