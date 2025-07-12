@@ -48,16 +48,21 @@ const AdminPanel = ({ profile, onUpdate }) => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Helper function to check if a value is a default placeholder
+  const isDefaultValue = (value, defaultText) => {
+    return value === defaultText || value === `${defaultText}`;
+  };
+
   useEffect(() => {
     if (profile) {
       setFormData({
-        name: profile.name || "",
-        title: profile.title || "",
-        description: profile.description || "",
-        about_me: profile.about_me || "",
-        email: profile.email || "",
-        phone: profile.phone || "",
-        location: profile.location || "",
+        name: isDefaultValue(profile.name, "Ваше имя") ? "" : profile.name || "",
+        title: isDefaultValue(profile.title, "Ваша профессия") ? "" : profile.title || "",
+        description: isDefaultValue(profile.description, "Краткое описание о себе") ? "" : profile.description || "",
+        about_me: isDefaultValue(profile.about_me, "Расскажите о себе подробнее...") ? "" : profile.about_me || "",
+        email: isDefaultValue(profile.email, "your@email.com") ? "" : profile.email || "",
+        phone: isDefaultValue(profile.phone, "+7 (999) 123-45-67") ? "" : profile.phone || "",
+        location: isDefaultValue(profile.location, "Город, Страна") ? "" : profile.location || "",
         social_links: {
           linkedin: profile.social_links?.linkedin || "",
           github: profile.social_links?.github || "",
