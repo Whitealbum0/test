@@ -187,7 +187,6 @@ async def upload_image(file: UploadFile = File(...), image_type: str = Form("ava
     
     # Update profile with new image
     update_field = "avatar" if image_type == "avatar" else "background_image"
-    logger.info(f"Updating field: '{update_field}' for image_type: '{image_type}'")
     await db.profile.update_one(
         {},
         {"$set": {update_field: base64_with_prefix, "updated_at": datetime.utcnow()}},
