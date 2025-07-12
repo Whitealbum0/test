@@ -2,54 +2,48 @@
 echo.
 echo Test Windows batch functionality
 echo.
+echo Press any key to start testing...
+pause
 
 echo Checking Python...
-python --version >nul 2>&1
-if not errorlevel 1 (
-    echo Python: OK
-    goto test_node
-) else (
+python --version 2>nul
+if errorlevel 1 (
     echo Python: NOT FOUND
-    goto test_node
+) else (
+    echo Python: OK
 )
+pause
 
-:test_node
 echo.
 echo Checking Node.js...
-node --version >nul 2>&1
-if not errorlevel 1 (
-    echo Node.js: OK
-    goto test_yarn
-) else (
+node --version 2>nul
+if errorlevel 1 (
     echo Node.js: NOT FOUND
-    goto test_yarn
+) else (
+    echo Node.js: OK
 )
+pause
 
-:test_yarn
 echo.
 echo Checking Yarn...
-yarn --version >nul 2>&1
-if not errorlevel 1 (
-    echo Yarn: OK
-    goto test_curl
-) else (
+yarn --version 2>nul
+if errorlevel 1 (
     echo Yarn: NOT FOUND
-    goto test_curl
+) else (
+    echo Yarn: OK
 )
+pause
 
-:test_curl
 echo.
 echo Checking curl...
 curl --version >nul 2>&1
-if not errorlevel 1 (
-    echo curl: OK
-    goto test_ports
-) else (
+if errorlevel 1 (
     echo curl: NOT FOUND
-    goto test_ports
+) else (
+    echo curl: OK
 )
+pause
 
-:test_ports
 echo.
 echo Checking ports...
 netstat -an | findstr :3000 >nul 2>&1
@@ -65,6 +59,7 @@ if errorlevel 1 (
 ) else (
     echo Port 8001: BUSY
 )
+pause
 
 echo.
 echo Checking project structure...
@@ -79,9 +74,11 @@ if exist "frontend\package.json" (
 ) else (
     echo frontend\package.json: NOT FOUND
 )
+pause
 
 echo.
 echo Basic test completed
 echo If everything shows OK/FOUND - you can try main batch files
 echo.
+echo Press any key to exit...
 pause
